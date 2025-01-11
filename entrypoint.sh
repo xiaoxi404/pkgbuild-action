@@ -12,7 +12,7 @@ FILE="$(basename "$0")"
 # create a lsign-key
 pacman-key --init
 
-pacman -Syu --noconfirm --disable-sandbox
+pacman -Syu --noconfirm
 
 # Makepkg does not allow running as root
 # Create a new user `builder`
@@ -39,7 +39,7 @@ fi
 # Optionally install dependencies from AUR
 if [ -n "${INPUT_AURDEPS:-}" ]; then
 	# First install yay
-	pacman -S --noconfirm --needed --disable-sandbox git
+	pacman -S --noconfirm --needed  git
 	git clone https://aur.archlinux.org/yay-bin.git /tmp/yay
 	pushd /tmp/yay
 	chmod -R a+rw .
@@ -94,7 +94,7 @@ function namcap_check() {
 	# Run namcap checks
 	# Installing namcap after building so that makepkg happens on a minimal
 	# install where any missing dependencies can be caught.
-	pacman -S --noconfirm --needed --disable-sandbox namcap
+	pacman -S --noconfirm --needed namcap
 
 	NAMCAP_ARGS=()
 	if [ -n "${INPUT_NAMCAPRULES:-}" ]; then
