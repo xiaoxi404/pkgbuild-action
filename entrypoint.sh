@@ -61,7 +61,7 @@ chown -R builder .
 # Build packages
 # INPUT_MAKEPKGARGS is intentionally unquoted to allow arg splitting
 # shellcheck disable=SC2086
-sudo -H -u builder -E makepkg --syncdeps --noconfirm --log ${INPUT_MAKEPKGARGS:-} > /dev/null
+sudo -H -u builder -E makepkg --syncdeps --noconfirm --log ${INPUT_MAKEPKGARGS:-}
 
 ls -lha
 
