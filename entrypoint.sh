@@ -9,6 +9,11 @@ FILE="$(basename "$0")"
 #Include = /etc/pacman.d/mirrorlist
 #EOM
 
+# Disable the seccomp sandboxing feature of pacman
+cat << EOM >> /etc/pacman.conf
+DisableSandboxSyscalls
+EOM
+
 # create a lsign-key
 pacman-key --init
 
